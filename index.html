@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>College Marksheet</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .marksheet {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .college-title {
+            font-weight: bold;
+            font-size: 28px;
+            color: #0d6efd;
+        }
+
+        .subtitle {
+            font-size: 18px;
+        }
+
+        table th {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+        }
+
+        table td {
+            text-align: center;
+        }
+
+        .result-box {
+            background: #e9f5ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form onsubmit="handleSubmit(); return false">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="html-css" class="form-label">HTML & CSS</label>
+                        <input type="number" min="35" max="100" class="form-control" id="html-css">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="js" class="form-label">JavaScript</label>
+                        <input type="number" min="35" max="100" class="form-control" id="js">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="react-js" class="form-label">React JS</label>
+                        <input type="number" min="35" max="100" class="form-control" id="react-js">
+                    </div>
+                    <div class="mb-3">
+                        <label for="node-express" class="form-label">Node & Express</label>
+                        <input type="number" min="35" max="100" class="form-control" id="node-express">
+                    </div>
+                    <div class="mb-3">
+                        <label for="database" class="form-label">Database (MongoDB)</label>
+                        <input type="number" min="35" max="100" class="form-control" id="database">
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick = handleMyMarksheet()>Genarate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="marksheet d-none"  id="myMarksheet">
+            <!-- College Header -->
+            <div class="text-center mb-4">
+                <div class="college-title">ABC Institute of Technology</div>
+                <div class="subtitle">Department of Computer Science</div>
+                <p>Marksheet – Full Stack Development</p>
+            </div>
+
+            <!-- Student Info -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p><strong>Name: </strong><span id="name-display"></span></p>
+                    <p><strong>Enrollment No:</strong> FS2025-101</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Semester:</strong> 5</p>
+                    <p><strong>Academic Year:</strong> 2025–2026</p>
+                </div>
+            </div>
+
+            <!-- Marks Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Subject Code</th>
+                            <th>Subject Name</th>
+                            <th>Max Marks</th>
+                            <th>Marks Obtained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FSD101</td>
+                            <td>HTML & CSS</td>
+                            <td>100</td>
+                            <td><span  id="html-display"></span></td>
+                        </tr>
+                        <tr>
+                            <td>FSD102</td>
+                            <td>JavaScript</td>
+                            <td>100</td>
+                            <td><span id="js-display"></span></td>
+                        </tr>
+                        <tr>
+                            <td>FSD103</td>
+                            <td>React JS</td>
+                            <td>100</td>
+                            <td><span id="rjs-display"></span></td>
+                        </tr>
+                        <tr>
+                            <td>FSD104</td>
+                            <td>Node & Express</td>
+                            <td>100</td>
+                            <td><span id="nejs-display"></span></td>
+                        </tr>
+                        <tr>
+                            <td>FSD105</td>
+                            <td>Database (MongoDB)</td>
+                            <td>100</td>
+                            <td><span id="Db-display"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Result Section -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="result-box">
+                        <p><strong>Total Marks: </strong><span id="total-display"></span></p>
+                        <p><strong>Percentage: </strong><span id="per-display"></span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="result-box">
+                        <p><strong>Grade:</strong> A</p>
+                        <p><strong>Result:</strong> <span class="text-success fw-bold">PASS</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-end mt-5">
+                <p><strong>Principal’s Signature</strong></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
